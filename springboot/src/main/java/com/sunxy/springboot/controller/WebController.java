@@ -1,6 +1,5 @@
 package com.sunxy.springboot.controller;
 
-import com.sunxy.springboot.common.Obj;
 import com.sunxy.springboot.common.Result;
 import org.springframework.web.bind.annotation.*;
 

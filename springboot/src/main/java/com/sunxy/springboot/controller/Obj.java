@@ -1,4 +1,4 @@
-package com.sunxy.springboot.common;
+package com.sunxy.springboot.controller;
 
 /**
  * 功能：
