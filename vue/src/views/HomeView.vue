@@ -40,10 +40,32 @@
                 <el-dropdown-item @click="">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-
           </div>
-
         </el-header>
+
+        <el-main>
+          <div style="box-shadow: 0 0 10px rgba(0,0,0,.1); padding: 10px 20px; border-radius: 5px; margin-bottom: 10px">
+            早安，骚年，祝你开心每一天！
+          </div>
+          <el-card style="width: 500px">
+            <div slot="header" class="clearfix">
+              <span>小标题</span>
+            </div>
+            <div>
+              主题内容
+              <div style="margin-top: 20px">
+                <div style="margin: 10px 0"><strong>主题色</strong></div>
+                <el-button type="primary">按钮</el-button>
+                <el-button type="success">按钮</el-button>
+                <el-button type="warning">按钮</el-button>
+                <el-button type="danger">按钮</el-button>
+                <el-button type="info">按钮</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-main>
+
+
       </el-container>
     </el-container>
   </div>
@@ -74,20 +96,6 @@ export default {
   background-color: #E9EEF3;
   color: #333;
   text-align: center;
-  line-height: 160px;
-}
-
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
 }
 
 .el-menu-inline{
