@@ -4,10 +4,9 @@ import com.sunxy.springboot.common.Result;
 import com.sunxy.springboot.entity.User;
 import com.sunxy.springboot.server.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 功能：
@@ -29,7 +28,34 @@ public class UserController {
     @PostMapping("/add")
     public Result add(@RequestBody User user){
         userService.insertUser(user);
-        return Result.success(user);
+        return Result.success();
+    }
+
+    /**
+     * 修改用户信息
+     */
+    @PutMapping("/update")
+    public Result update(@RequestBody User user) {
+        userService.updateUser(user);
+        return Result.success();
+    }
+
+    /**
+     * 删除用户信息
+     */
+    @DeleteMapping("/delete/{id}")
+    public Result delete(@PathVariable Integer id) {
+        userService.deleteUser(id);
+        return Result.success();
+    }
+
+    /**
+     * 批量删除用户信息
+     */
+    @DeleteMapping("/delete/batch")
+    public Result batchDelete(@RequestBody List<Integer> ids) {  //  [7, 8]
+        userService.batchDeleteUser(ids);
+        return Result.success();
     }
 
 }

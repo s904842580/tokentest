@@ -1,8 +1,10 @@
 package com.sunxy.springboot.mapper;
 
 import com.sunxy.springboot.entity.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 /*注入到Spring容器中*/
@@ -12,5 +14,14 @@ public interface UserMapper {
     "values (#{username}, #{password}, #{name}, #{phone}, #{email}, #{address}, #{avatar})")
     /*插入到数据库中*/
     void insert(User user);
+
+    /*根据id修改*/
+    @Update("update `user` set username = #{username}, password = #{password}, name= #{name}, phone = #{phone}, " +
+            "email = #{email}, address = #{address}, avatar = #{avatar} where id = #{id}")
+    void updateUser(User user);
+
+    /*单个删除*/
+    @Delete("delete from `user` where id = #{id}")
+    void deleteUser(Integer id);
 
 }
