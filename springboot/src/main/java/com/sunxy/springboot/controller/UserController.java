@@ -14,6 +14,7 @@ import java.util.List;
  * 日期：2023/10/17 9:15
  */
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -56,6 +57,24 @@ public class UserController {
     public Result batchDelete(@RequestBody List<Integer> ids) {  //  [7, 8]
         userService.batchDeleteUser(ids);
         return Result.success();
+    }
+
+    /**
+     * 查询全部用户信息
+     */
+    @GetMapping("/selectAll")
+    public Result selectAll() {
+        List<User> userList = userService.selectAll();
+        return Result.success(userList);
+    }
+
+    /**
+     * 根据ID查询用户信息
+     */
+    @GetMapping("/selectById/{id}")
+    public Result selectById(@PathVariable Integer id) {
+        User user = userService.selectById(id);
+        return Result.success(user);
     }
 
 }

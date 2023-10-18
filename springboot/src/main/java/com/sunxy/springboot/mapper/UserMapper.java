@@ -1,10 +1,9 @@
 package com.sunxy.springboot.mapper;
 
 import com.sunxy.springboot.entity.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 /*注入到Spring容器中*/
@@ -24,4 +23,11 @@ public interface UserMapper {
     @Delete("delete from `user` where id = #{id}")
     void deleteUser(Integer id);
 
+    /*查询多个数据*/
+    @Select("select * from `user` order by id desc")
+    List<User> selectAll();
+
+    /*查询单个数据*/
+    @Select("select * from `user` where id = #{id} order by id desc")
+    User selectById(Integer id);
 }

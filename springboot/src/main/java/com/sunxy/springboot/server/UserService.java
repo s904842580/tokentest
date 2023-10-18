@@ -38,4 +38,14 @@ public class UserService {
             userMapper.deleteUser(id);  // 7  - 8
         }
     }
+
+    /*查询所有数据*/
+    public List<User> selectAll() {
+        return userMapper.selectAll();
+    }
+
+    /*查询单个用户*/
+    public User selectById(Integer id) {
+        return userMapper.selectById(id);
+    }
 }
