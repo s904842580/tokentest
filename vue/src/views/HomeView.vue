@@ -91,6 +91,8 @@
 <script>
 import axios from "axios";
 
+import request from "@/utils/request";
+
 export default {
   name: 'HomeView',
   data(){
@@ -99,12 +101,22 @@ export default {
     }
   },
   mounted(){ //页面加载完成之后触发
-    axios.get('http://localhost:9090/user/selectAll').then(res => {
-      console.log(res)
-    })
-  }
 
-}
+    request.get('/user/selectAll').then(res =>{
+      this.users = res.data
+    })
+    /*axios.get('http://localhost:9090/user/selectAll').then(res => {
+      console.log(res.data) //后台返回的数据
+      this.users = res.data.data*/
+      /*res.data = { //数据格式
+        code: '200',
+        msg: '请求成功',
+        data:{
+
+        }
+      }*/
+    }
+  }
 
 </script>
 <style>
