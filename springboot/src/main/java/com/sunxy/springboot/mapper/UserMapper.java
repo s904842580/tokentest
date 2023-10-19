@@ -30,4 +30,10 @@ public interface UserMapper {
     /*查询单个数据*/
     @Select("select * from `user` where id = #{id} order by id desc")
     User selectById(Integer id);
+
+    @Select("select * from `user` where username = #{username} and name = #{name} order by id desc")
+    List<User> selectByMore(@Param("username") String username, @Param("name") String name);
+
+    @Select("select * from `user` where username = #{username} order by id desc")
+    User selectByUsername(String username);
 }

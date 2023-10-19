@@ -1,7 +1,12 @@
 package com.sunxy.springboot.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.sunxy.springboot.common.Result;
+import com.sunxy.springboot.entity.User;
+import com.sunxy.springboot.server.UserService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+
 
 /**
  * 功能：提供接口返回数据
@@ -10,22 +15,35 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("web")
 public class WebController {
 
-    @RequestMapping("/hello")
-    public Result hello(String name){/*一般都是定义对象来传递数据*/
-        return Result.success("hello 夏瑾溪") ;
+    @Resource
+    UserService userService;
+
+    @GetMapping("/")
+    public Result hello() {
+        return Result.success("success");
     }
 
-    @PostMapping("/post")
-    public Result post(@RequestBody Obj obj){
-        return Result.success(obj);
+    @PostMapping("/login")
+    public Result login(@RequestBody User user) {
+        if (StrUtil.isBlank(user.getUsername()) || StrUtil.isBlank(user.getPassword())) {
+            return Result.error("数据输入不合法");
+        }
+        user = userService.login(user);
+        return Result.success(user);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Result delete(@PathVariable Integer id){
-        return Result.success(id);
+    @PostMapping("/register")
+    public Result register(@RequestBody User user) {
+        if (StrUtil.isBlank(user.getUsername()) || StrUtil.isBlank(user.getPassword())) {
+            return Result.error("数据输入不合法");
+        }
+        if (user.getUsername().length() > 10 || user.getPassword().length() > 20) {
+            return Result.error("数据输入不合法");
+        }
+        user = userService.register(user);
+        return Result.success(user);
     }
 
 }

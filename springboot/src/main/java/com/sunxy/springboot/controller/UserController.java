@@ -1,5 +1,6 @@
 package com.sunxy.springboot.controller;
 
+import cn.hutool.db.Page;
 import com.sunxy.springboot.common.Result;
 import com.sunxy.springboot.entity.User;
 import com.sunxy.springboot.server.UserService;
@@ -76,5 +77,6 @@ public class UserController {
         User user = userService.selectById(id);
         return Result.success(user);
     }
+
 
 }
