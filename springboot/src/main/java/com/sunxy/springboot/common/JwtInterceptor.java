@@ -12,6 +12,7 @@ import com.sunxy.springboot.mapper.UserMapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
@@ -31,13 +32,13 @@ public class JwtInterceptor implements HandlerInterceptor {
         if (StrUtil.isBlank(token)) {
             token = request.getParameter("token");// url参数 ？token = xxxx
         }
-        /*// 如果不是映射到方法直接通过
+        // 如果不是映射到方法直接通过
         if (handler instanceof HandlerMethod) {
             AuthAccess annotation = ((HandlerMethod) handler).getMethodAnnotation(AuthAccess.class);
             if (annotation != null) {
                 return true;
             }
-        }*/
+        }
         // 执行认证
         if (StrUtil.isBlank(token)) {
             throw new ServiceException("401", "请登录");

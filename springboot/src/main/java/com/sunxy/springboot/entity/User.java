@@ -1,9 +1,7 @@
 package com.sunxy.springboot.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.Data;
 
 /**
  * 功能：
@@ -11,12 +9,12 @@ import lombok.Setter;
  * 日期：2023/10/17 9:05
  */
 
-@Getter
-@Setter
+
 /*实现get和set方法*/
-@NoArgsConstructor
-@AllArgsConstructor
+/*@NoArgsConstructor
+@AllArgsConstructor*/
 /*无参构造和有参构造*/
+    @Data
 public class User {
     private Integer id;
     private String username;
@@ -26,4 +24,5 @@ public class User {
     private String email;
     private String address;
     private String avatar;
+    private String token;
 }

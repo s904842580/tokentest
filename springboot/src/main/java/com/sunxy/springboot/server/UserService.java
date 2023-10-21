@@ -1,9 +1,9 @@
 package com.sunxy.springboot.server;
 
-import cn.hutool.db.Page;
 import com.sunxy.springboot.entity.User;
 import com.sunxy.springboot.exception.ServiceException;
 import com.sunxy.springboot.mapper.UserMapper;
+import com.sunxy.springboot.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +62,9 @@ public class UserService {
         if (!user.getPassword().equals(dbUser.getPassword())) {
             throw new ServiceException("用户名或密码错误");
         }
+        //生成token
+        String token = TokenUtils.createToken(dbUser.getId().toString(), dbUser.getPassword());
+        dbUser.setToken(token);
         return dbUser;
     }
 
