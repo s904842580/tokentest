@@ -101,7 +101,9 @@ export default {
     }
   },
   mounted(){//页面加载完成之后触发
-
+    // if(!this.user.id){ //当前的浏览器没有用户信息
+    //   this.$router.push('/login')
+    // }
     request.get('/user/selectAll').then(res =>{
       this.users = res.data
     })
