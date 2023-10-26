@@ -14,7 +14,12 @@ const routes = [
       path: 'home',
       name: 'Home',
       component: () => import('../views/manager/Home')
-    }
+    },
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('../views/manager/User')
+      }
     ]
   },
   {
