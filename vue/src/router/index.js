@@ -9,11 +9,7 @@ const routes = [
     name: 'Manager',
     component: () => import('../views/Manager'),
     children:[
-      {
-        path: 'user',
-        name: 'User',
-        component: () => import('../views/manager/User')
-      }
+
     ]
   },
   {
